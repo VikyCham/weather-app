@@ -57,6 +57,7 @@ $("#microphone, #try_again").on("click", function () {
         $(".modal-container").hide();
         $(".weather_data").fadeOut();
         $("#error").fadeIn();
+        $(".container").css("overflow", "hidden");
       }
     },
     error: function (response) {},
@@ -103,6 +104,7 @@ $("#input_text").on("keypress", function (e) {
           } else {
             $(".weather_data").fadeOut();
             $("#error").fadeIn();
+            $(".container").css("overflow", "hidden");
           }
         },
         error: function (response) {},

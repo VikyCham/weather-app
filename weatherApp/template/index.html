@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/font-awesome/css/font-awesome.min.css' %}"
+    />
+    <title>Weather App</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Weather App</h1>
+
+      <div class="search_zone">
+        <div class="input-container">
+          <i class="fa fa-search"></i>
+          <input
+            type="text"
+            id="input_text"
+            placeholder="Enter City/State...."
+          />
+          {% csrf_token %}
+          <i class="fa fa-microphone" id="microphone" aria-hidden="true"></i>
+        </div>
+        <h3 id="error">Enter Valid City Or State Name</h3>
+      </div>
+
+      <div class="weather_data">
+        <div class="img-text">
+          <div class="title-heading">
+            <span class="title"></span> <span class="title2"></span>
+          </div>
+          <img src="#" alt="weather_icon" />
+          <div id="degree"></div>
+          <div id="discription"></div>
+        </div>
+      </div>
+
+      <div class="drops">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="modal-container">
+      <div class="modal">
+        <div class="microphone-div">
+          <i
+            class="fa fa-microphone"
+            id="speak-microphone"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="text">
+          <span id="listening">Listening...... </span>
+          <span id="try_again"> Try Again? </span>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

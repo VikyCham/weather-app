@@ -12,7 +12,7 @@ def index(request):
 
 def fetchWeather(city_name):
     # getting cordinates
-    geocoder = Nominatim(user_agent="weather_app")
+    geocoder = Nominatim(user_agent="weather_app", timeout=5)
     coordinates = geocoder.geocode(city_name)
 
     if coordinates == None:

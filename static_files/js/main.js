@@ -19,6 +19,7 @@ function showWeather(data, text) {
   $("#degree").html(degree + "&deg;");
   $(".weather_data").fadeIn();
   $("#error").fadeOut();
+  $(".container").css("overflow", "auto");
 }
 
 $("#microphone, #try_again").on("click", function () {

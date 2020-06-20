@@ -255,7 +255,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 45%;
-  height: 50%;
+  height: 55%;
   border-radius: 20px;
   z-index: 4;
   background: rgb(255, 255, 255);
@@ -284,11 +284,11 @@ h1 {
     background-color: rgb(163, 30, 30);
   }
   50% {
-    box-shadow: 0 0 0 30px rgba(114, 63, 63, 0.452);
+    box-shadow: 0 0 0 15px rgba(114, 63, 63, 0.452);
     background-color: rgb(163, 30, 156);
   }
   100% {
-    box-shadow: 0 0 0 60px rgba(114, 63, 63, 0);
+    box-shadow: 0 0 0 30px rgba(114, 63, 63, 0);
     background-color: rgb(30, 77, 163);
   }
 }

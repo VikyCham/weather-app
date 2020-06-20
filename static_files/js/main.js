@@ -53,10 +53,16 @@ $("#microphone, #try_again").on("click", function () {
         $(".modal-container").hide();
         showWeather(data, response.text);
       } else {
+        if (response.error == "connection_failed") {
+          $("#error").html("Check your internet connection");
+          $("#error").fadeIn();
+        } else {
+          $("#error").html("Enter Valid City Or State Name");
+          $("#error").fadeIn();
+        }
         $("#input_text").val(response.text);
         $(".modal-container").hide();
         $(".weather_data").fadeOut();
-        $("#error").fadeIn();
         $(".container").css("overflow", "hidden");
       }
     },
@@ -102,8 +108,14 @@ $("#input_text").on("keypress", function (e) {
           if (data !== "not found") {
             showWeather(data, response.text);
           } else {
+            if (response.error == "connection_failed") {
+              $("#error").html("Check your internet connection");
+              $("#error").fadeIn();
+            } else {
+              $("#error").html("Enter Valid City Or State Name");
+              $("#error").fadeIn();
+            }
             $(".weather_data").fadeOut();
-            $("#error").fadeIn();
             $(".container").css("overflow", "hidden");
           }
         },

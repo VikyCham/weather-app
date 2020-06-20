@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+import geopy.exc as geopy_error
 from geopy.geocoders import Nominatim
 import speech_recognition as sr
 import urllib.request
@@ -12,12 +13,18 @@ def index(request):
 
 def fetchWeather(city_name):
     # getting cordinates
-    geocoder = Nominatim(user_agent="weather_app", timeout=5)
-    coordinates = geocoder.geocode(city_name)
+    try:
+        geocoder = Nominatim(user_agent="weatherApp", timeout=3)
+        coordinates = geocoder.geocode(city_name)
 
-    if coordinates == None:
+        if coordinates == None:
+            return JsonResponse({"data": "not found",
+                                 "text": city_name})
+    except (geopy_error.GeocoderServiceError, geopy_error.GeocoderTimedOut):
         return JsonResponse({"data": "not found",
-                             "text": city_name})
+                             "error": "connection_failed",
+                             "text": city_name,
+                             })
 
     lati = str(round(coordinates.latitude, 2))
     longi = str(round(coordinates.longitude, 2))
@@ -63,9 +70,10 @@ def getWeatherWithMic(request):
                 if output_text:
                     return fetchWeather(output_text)
 
-        except sr.RequestError as e:
-            error = f"Could not request results: {e}"
-            return JsonResponse({"data": error})
+        except sr.RequestError:
+            return JsonResponse({"data": "not found",
+                                 "error": "connection_failed",
+                                 })
         except sr.UnknownValueError:
             return JsonResponse({"data": "Unable"})
 

@@ -6,7 +6,7 @@ This project consists of two main modules 1. GEOPY and 2. SpeechRecognition and 
 ## Getting Started
 
 Clone this repo into your local machine using this url:
-`https://github.com/Victor91001/mobile-ordering-website.git`
+`https://github.com/VikyCham/weather-app.git`
 
 or you can download the **.zip** file from above button.
 
